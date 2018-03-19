@@ -1,0 +1,20 @@
+{
+  "name": "react-rosa-example",
+  "version": "0.0.1",
+  "description": "react-rosa-example",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "start": "cd client && ./node_modules/webpack/bin/webpack.js && cd ../server && ./node_modules/typescript/bin/tsc && cd dist/server/src && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zoil/react-rosa-example.git"
+  },
+  "keywords": ["react", "rosa"],
+  "author": "Zoltan Jano <zoltan.jano@gmail.com> (https://github.com/zoil)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoil/react-rosa-example/issues"
+  },
+  "homepage": "https://github.com/zoil/react-rosa-example#readme"
+}

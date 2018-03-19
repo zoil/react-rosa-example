@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "lib": ["es5", "es6", "dom"],
+    "target": "es5",
+    "jsx": "react",
+    "types": ["webpack-env", "node"]
+  }
+}

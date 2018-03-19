@@ -1,7 +1,7 @@
-import { SubscriptionDef } from "react-rosa";
+import { QueryDefinition } from "rosa-client";
 
 export namespace Todo {
-  export function counts(): SubscriptionDef {
+  export function counts(): QueryDefinition {
     return {
       name: "counts",
       params: {
@@ -10,7 +10,7 @@ export namespace Todo {
     };
   }
 
-  export function find(status: string): SubscriptionDef {
+  export function find(status: string): QueryDefinition {
     return {
       name: "list",
       params: {
@@ -19,7 +19,7 @@ export namespace Todo {
     };
   }
 
-  export function findOne(id: string): SubscriptionDef {
+  export function findOne(id: string): QueryDefinition {
     return {
       name: "todo",
       params: {

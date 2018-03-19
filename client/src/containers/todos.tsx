@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, ActionDef } from "react-rosa";
+import { connect } from "react-rosa";
 import { Redirect } from "react-router-dom";
 
 import { Filters, ValidFilters } from "../types/filters";
@@ -129,7 +129,6 @@ class Todos extends React.Component<Props, State> {
   }
 
   render() {
-    console.log("todos", this.props.counts);
     // Enforce that the status is valid.
     if (
       !this.props.match.params.status ||
@@ -156,10 +155,9 @@ class Todos extends React.Component<Props, State> {
  * rosa subscription definitions.
  */
 function mapSubscriptionsToProps(props: Props) {
-  const status = props.match.params.status ? props.match.params.status : "all";
   return {
     counts: Queries.Todo.counts(),
-    todos: Queries.Todo.find(status)
+    todos: Queries.Todo.find(props.match.params.status)
   };
 }
 
@@ -167,9 +165,8 @@ function mapSubscriptionsToProps(props: Props) {
  * rosa action definitions.
  */
 function mapActionsToProps(props: Props) {
-  const status = props.match.params.status ? props.match.params.status : "all";
   return {
-    toggleAll: Actions.Todo.toggleAll(status),
+    toggleAll: Actions.Todo.toggleAll(props.match.params.status),
     clearCompleted: Actions.Todo.clearCompleted()
   };
 }

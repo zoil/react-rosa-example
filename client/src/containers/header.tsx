@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, ActionDef } from "react-rosa";
+import { connect } from "react-rosa";
 
 import { KEY_ENTER, KEY_ESCAPE } from "../types/keys";
 import { Actions } from "../store";

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as classNames from "classnames";
-import { connect, ActionDef } from "react-rosa";
+import { connect } from "react-rosa";
 
 import { KEY_ESCAPE, KEY_ENTER } from "../types/keys";
 import { Actions, Models, Queries } from "../store";

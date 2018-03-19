@@ -1,7 +1,7 @@
-import { ActionDef } from "react-rosa";
+import { ActionDefinition } from "rosa-client";
 
 export namespace Todo {
-  export function toggleAll(status: string): ActionDef {
+  export function toggleAll(status: string): ActionDefinition {
     return {
       name: "toggleAll",
       params: {
@@ -10,14 +10,14 @@ export namespace Todo {
     };
   }
 
-  export function clearCompleted(): ActionDef {
+  export function clearCompleted(): ActionDefinition {
     return {
       name: "clearCompleted",
       params: {}
     };
   }
 
-  export function update(todoId: string, fields: {}): ActionDef {
+  export function update(todoId: string, fields: {}): ActionDefinition {
     return {
       name: "update",
       params: {
@@ -27,14 +27,14 @@ export namespace Todo {
     };
   }
 
-  export function remove(id: string): ActionDef {
+  export function remove(id: string): ActionDefinition {
     return {
       name: "delete",
       params: { id }
     };
   }
 
-  export function create(title: string): ActionDef {
+  export function create(title: string): ActionDefinition {
     return {
       name: "create",
       params: {

@@ -1,6 +1,7 @@
 import { Rosa } from "rosa";
 import { Server } from "http";
 import { ActionParams, QueryParams } from "rosa-shared";
+import * as RedisMock from "redis-mock";
 
 //- Publications
 import List from "./publications/list";
@@ -14,16 +15,19 @@ import Create from "./actions/create";
 import ToggleAll from "./actions/toggle-all";
 import Delete from "./actions/delete";
 
+const redisClient = RedisMock.createClient();
+
 export function createRosa(server: Server) {
   const rosa = Rosa({
     httpServer: server,
     sockjs: {
       prefix: "/sockjs"
     },
-    redis: {
-      host: "localhost",
-      port: 6379
-    }
+    redisClient: redisClient
+    // redis: {
+    //   host: "localhost",
+    //   port: 6379
+    // }
   });
 
   //- Publications

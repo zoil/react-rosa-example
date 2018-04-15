@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import * as RosaClient from "rosa-client";
 import { Provider } from "react-rosa";
 
 import App from "./components/app";

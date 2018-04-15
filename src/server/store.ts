@@ -1,4 +1,4 @@
-import { Todo } from "../../shared/store/models";
+import { Todo } from "../models";
 
 let todosNextId: number = 1;
 const todos: { [key: string]: Todo } = {};

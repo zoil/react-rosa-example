@@ -2,16 +2,29 @@ import * as webpack from "webpack";
 import * as path from "path";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 
-const config: webpack.Configuration = {
+export const config: webpack.Configuration = {
   mode: "development",
-  entry: ["react-hot-loader/patch", "./src/index.tsx"],
+  entry: {
+    // main: "./src/main.js",
+    ts: "./src/client/index.tsx"
+  },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "[name]-bundle.js",
+    publicPath: "/"
+  },
+
+  devServer: {
+    contentBase: "dist",
+    overlay: true,
+    stats: {
+      warning: false,
+      colors: true
+    }
   },
 
   // Enable sourcemaps for debugging webpack's output.
-  devtool: "source-map",
+  devtool: "inline-source-map",
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
@@ -19,17 +32,34 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: "react-rosa-example",
       chunksSortMode: "dependency",
-      template: path.resolve(__dirname, "./src/index.ejs")
+      template: path.resolve(__dirname, "../src/client/index.ejs")
     })
   ],
 
   module: {
     rules: [
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: "babel-loader"
+      //     }
+      //   ]
+      // },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/
+        // options: {
+        //   configFile: path.join(__dirname, "./config/tsconfig.json")
+        // }
+      },
+
       // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
       {
         test: /\.tsx?$/,
@@ -52,13 +82,6 @@ const config: webpack.Configuration = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  },
-
-  devServer: {
-    hot: true,
-    historyApiFallback: {
-      index: "/"
-    }
   }
 };
 

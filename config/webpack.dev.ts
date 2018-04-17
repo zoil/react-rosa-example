@@ -31,15 +31,6 @@ export const config: webpack.Configuration = {
     extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      title: "react-rosa-example",
-      chunksSortMode: "dependency",
-      template: path.resolve(__dirname, "../src/client/index.ejs")
-    })
-  ],
-
   module: {
     rules: [
       // {
@@ -82,7 +73,16 @@ export const config: webpack.Configuration = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      title: "react-rosa-example",
+      chunksSortMode: "dependency",
+      template: path.resolve(__dirname, "../src/client/index.ejs")
+    })
+  ]
 };
 
 export default config;
